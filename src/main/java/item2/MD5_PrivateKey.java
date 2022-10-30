@@ -40,6 +40,13 @@ public class MD5_PrivateKey {
       md.update(texto.getBytes());
       byte[] digest = md.digest();
 
+      // Se escribe byte a byte en hexadecimal
+      System.out.println("Hash en Hex:");
+      for (byte b : digest) {
+         System.out.print(Integer.toHexString(0xFF & b));
+      }
+      System.out.println();
+
       // Inicializa el Objeto Cipher RSA
       Cipher rsaCipher = Cipher.getInstance("RSA");
       rsaCipher.init(Cipher.ENCRYPT_MODE, privatekey);

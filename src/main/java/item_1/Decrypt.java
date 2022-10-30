@@ -38,21 +38,21 @@ public class Decrypt {
             PrivateKey privatekey = (PrivateKey) myKeyStore.getKey("mykey", "storepass".toCharArray());
 
             // Inicializar el Objeto Cipher RSA
-            Cipher aesCipher = Cipher.getInstance("RSA");
-            aesCipher.init(Cipher.DECRYPT_MODE, privatekey);
+            Cipher rsaCipher = Cipher.getInstance("RSA");
+            rsaCipher.init(Cipher.DECRYPT_MODE, privatekey);
 
             // Lee la clave secreta AES (256 bytes)
             byte[] b = new byte[256];
             rawDataFromFile.read(b);
-            byte[] claveAESraw = aesCipher.doFinal(b);
+            byte[] claveAESraw = rsaCipher.doFinal(b);
             SecretKeySpec claveAES = new SecretKeySpec(claveAESraw, "AES");
 
             // Inicializar el Objeto Cipher AES
-            Cipher rsaCipher = Cipher.getInstance("AES");
-            rsaCipher.init(Cipher.DECRYPT_MODE, claveAES);
+            Cipher aesCipher = Cipher.getInstance("AES");
+            aesCipher.init(Cipher.DECRYPT_MODE, claveAES);
 
             // Desencripta los contenidos del archivo
-            byte[] out = rsaCipher.doFinal(rawDataFromFile.readAllBytes());
+            byte[] out = aesCipher.doFinal(rawDataFromFile.readAllBytes());
 
             // Imprime los contenidos por consola
             System.out.println(new String(out));
