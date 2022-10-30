@@ -7,7 +7,7 @@
     <dependencies>
         <dependency>
             <groupId>commons-codec</groupId>
-            <artifact>commons-codec</artifact>
+            <artifactId>commons-codec</artifactId>
             <version>1.15</version>
         </dependency>
     </dependencies>
@@ -15,6 +15,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
-        <exec.mainClass>com.mycompany.lab.App</exec.mainClass>
+        <exec.mainClass>item_1.Decrypt</exec.mainClass>
     </properties>
 </project>
