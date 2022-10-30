@@ -84,6 +84,7 @@ public class EncryptWithKeyStore {
             outToFile.write(cipherText);
 
             System.out.println("Cerrando Archivos");
+            inStream.close();
             rawDataFromFile.close();
             outToFile.close();
         } catch (Exception e) {
